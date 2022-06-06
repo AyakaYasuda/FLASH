@@ -94,7 +94,6 @@ const dispatchMiddleware = dispatch => {
 };
 
 const cardReducer = (state, action) => {
-  console.log(action.type);
   switch (action.type) {
     case "GET_ALL_CARDS":
       return {

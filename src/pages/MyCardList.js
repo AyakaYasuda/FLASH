@@ -48,9 +48,7 @@ const MyCardList = () => {
   }
 
   useEffect(() => {
-    console.log(status);
     if (status === "completed") {
-      console.log(loadedCards);
       if (!loadedCards || loadedCards.length === 0) {
         console.log("run if");
         setContent(<NoCardsYet />);
