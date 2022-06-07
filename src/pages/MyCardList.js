@@ -21,6 +21,7 @@ const MyCardList = () => {
   const [levels, setLevels] = useState([]);
   const [content, setContent] = useState();
   const [searchInput, setSearchInput] = useState();
+  const [isDataInitialized, setIsDataInitialized] = useState(false);
 
   const searchInputChangeHandler = useCallback(event => {
     const {
@@ -37,27 +38,26 @@ const MyCardList = () => {
   }, []);
 
   useEffect(() => {
-    if (authUser.uid) {
+    if (!isDataInitialized && authUser.uid) {
       const loginUserId = authUser.uid;
       dispatch({ type: "GET_USER_CARDS", payload: loginUserId });
+      setIsDataInitialized(true);
     }
-  }, [authUser]);
+  }, [authUser, isDataInitialized]);
 
   if (error) {
     setContent({ error });
   }
 
   useEffect(() => {
-    if (status === "completed") {
+    if (isDataInitialized) {
       if (!loadedCards || loadedCards.length === 0) {
-        console.log("run if");
         setContent(<NoCardsYet />);
       } else {
-        console.log("run else");
         setContent(<CardList cards={loadedCards} />);
       }
     }
-  }, [loadedCards, status]);
+  }, [loadedCards, isDataInitialized]);
 
   useEffect(() => {
     if (levels && levels.length > 0) {
@@ -93,7 +93,7 @@ const MyCardList = () => {
         {status === "pending" ? (
           <div className="FlexCenter my-10">
             <h2>Loading...</h2>
-            <img src={Bug} className="h-12 w-auto ml-2" />
+            <img src={Bug} alt="Bug" className="h-12 w-auto ml-2" />
           </div>
         ) : (
           content

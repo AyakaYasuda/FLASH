@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { CardContext } from "../context/card-context";
 import { AuthContext } from "../context/auth-context";
@@ -12,7 +12,7 @@ import Button from "../components/UI/Button";
 
 const CreateCard = () => {
   const navigate = useNavigate();
-  const { dispatch } = useContext(CardContext);
+  const { dispatch, status } = useContext(CardContext);
   const { authUser } = useContext(AuthContext);
 
   const [front, setFront] = useState("");
@@ -20,6 +20,8 @@ const CreateCard = () => {
   const [example, setExample] = useState("");
   const [comment, setComment] = useState("");
   const [level, setLevel] = useState("");
+
+  const [isDone, setIsDone] = useState(false);
 
   const loginUserId = authUser.uid;
 
@@ -39,15 +41,20 @@ const CreateCard = () => {
       type: "ADD_CARD",
       payload: { cardData: cardData, uid: authUser.uid },
     });
+    setIsDone(true);
 
     setFront("");
     setBack("");
     setExample("");
     setComment("");
     setLevel("");
-
-    navigate("/my-cards");
   };
+
+  useEffect(() => {
+    if (isDone && status === "completed") {
+      navigate("/my-cards");
+    }
+  }, [isDone, status]);
 
   return (
     <div className="WhiteContainer my-8 sm:my-10">

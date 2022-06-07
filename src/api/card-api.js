@@ -23,6 +23,7 @@ export const getCards = async () => {
   return loadedCards;
 };
 
+// FIXME : need to update by fetching only user's cards not all cards
 export const getUserCards = async userId => {
   const loadedCards = await getCards();
   return loadedCards.filter(card => card.userId === userId);

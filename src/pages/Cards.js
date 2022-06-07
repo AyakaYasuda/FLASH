@@ -9,12 +9,7 @@ import CardSwiper from "../components/Cards/CardSwiper";
 import NoCardsYet from "../components/UI/NoCardsYet";
 
 const Cards = () => {
-  const {
-    data: loadedCards,
-    error,
-    status,
-    dispatch,
-  } = useContext(CardContext);
+  const { data: loadedCards, status, dispatch } = useContext(CardContext);
   const { authUser } = useContext(AuthContext);
   const [cards, setCards] = useState();
 
@@ -48,7 +43,7 @@ const Cards = () => {
     content = (
       <div className="FlexCenter my-10">
         <h2>Loading...</h2>
-        <img src={Bug} className="h-12 w-auto ml-2" />
+        <img src={Bug} alt="Bug" className="h-12 w-auto ml-2" />
       </div>
     );
   } else if (cards && cards.length > 0) {

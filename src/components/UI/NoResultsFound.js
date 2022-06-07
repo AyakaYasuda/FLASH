@@ -9,7 +9,7 @@ const NoResultsFound = () => {
         No Results Found... <br />
         Please try again!
       </h2>
-      <img src={Search} className="h-12 w-auto ml-2" />
+      <img src={Search} alt="Search" className="h-12 w-auto ml-2" />
     </div>
   );
 };
