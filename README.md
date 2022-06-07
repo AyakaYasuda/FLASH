@@ -13,7 +13,7 @@ On this project, I aimed to deep-understand how to work with React Hooks such as
 
 ### Some of the challenges I faced through this project
 
-I found it really tough to expect what's happening after every render, especially when I try to let React know what the component needs to do after render. It took me a lot of time to understand how to handle side effects and get components to be rendered in the way as I want to do.
+I found it really tough to expect what's happening after every render, especially when I try to let React know what the component needs to do after render such as showing filtered cards or search results. It took me a lot of time to understand how to handle side effects and get components to be rendered as I want to do.
 
 ### The technologies I used for this app
 
