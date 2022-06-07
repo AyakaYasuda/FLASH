@@ -22,6 +22,8 @@ const EditCard = () => {
   const [comment, setComment] = useState("");
   const [level, setLevel] = useState("");
 
+  const [isDone, setIsDone] = useState(false);
+
   useEffect(() => {
     dispatch({ type: "GET_SINGLE_CARD", payload: cardId });
   }, []);
@@ -48,10 +50,14 @@ const EditCard = () => {
       type: "UPDATE_CARD",
       payload: { id: cardId, data: updatedCard, uid: authUser.uid },
     });
-    if (status === "completed") {
-      navigate("/cards");
-    }
+    setIsDone(true);
   };
+
+  useEffect(() => {
+    if (isDone && status === "completed") {
+      navigate("/my-cards");
+    }
+  }, [isDone, status]);
 
   return (
     <div className="WhiteContainer my-8 sm:my-10">
