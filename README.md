@@ -1,70 +1,41 @@
-# Getting Started with Create React App
+# FLASH
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## ** ABOUT **
 
-## Available Scripts
+This app promotes studying by helping users memorize new words.
+Once you log in the app, you can make your own flashcards that contains not only words and their corresponding meanings but also your own example sentences and comments.
+Besides, the feature to shuffle cards enables your brain learn effectively!
+As a language learner, I'm also a frequent user of this app :)
 
-In the project directory, you can run:
+### The aim of this project
 
-### `npm start`
+On this project, I aimed to deep-understand how to work with React Hooks such as State Hook and Effect Hook, and also Context API so that I would feel comfortable in managing state in the app. Another thing that I focused on was creating REST API and connecting the app with database, which was such a valuable experience for me to care about both frontend and backend.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Some of the challenges I faced through this project
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+I found it really tough to expect what's happening after every render, especially when I try to let React know what the component needs to do after render. It took me a lot of time to understand how to handle side effects and get components to be rendered in the way as I want to do.
 
-### `npm test`
+### The technologies I used for this app
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- React
+- React Hooks
+- Tailwind CSS
+- Firebase Realtime Database
+- Heroku
+- GitHub Actions
 
-### `npm run build`
+## ** Preview **
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### [FLASH](https://midpj-flashcard-app.herokuapp.com/)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Home
+<img width="1440" alt="flash-home" src="https://user-images.githubusercontent.com/60804249/172283807-36c11832-863f-4656-9f07-74e763582817.png">
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Cards Menu
+<img width="1440" alt="flash-cards" src="https://user-images.githubusercontent.com/60804249/172284089-9bfc9492-4f38-4151-8621-01e18c6c4c75.png">
 
-### `npm run eject`
+MyCardList
+<img width="1440" alt="flash-mycardslist" src="https://user-images.githubusercontent.com/60804249/172284730-98388088-0e01-42a8-80eb-801d5152da4b.png">
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Create Form
+<img width="1440" alt="flash-create" src="https://user-images.githubusercontent.com/60804249/172284757-74f98902-2396-49b4-a4d7-b7cb7209e986.png">
