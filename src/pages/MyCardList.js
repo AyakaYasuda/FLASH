@@ -6,6 +6,7 @@ import CardList from "../components/Cards/CardList";
 import CardFilter from "../components/Cards/CardFilter";
 import CardSearch from "../components/Cards/CardSearch";
 import NoResultsFound from "../components/UI/NoResultsFound";
+import NoCardsYet from "../components/UI/NoCardsYet";
 import { CardContext } from "../context/card-context";
 import { AuthContext } from "../context/auth-context";
 
@@ -18,8 +19,9 @@ const MyCardList = () => {
   } = useContext(CardContext);
   const { authUser } = useContext(AuthContext);
   const [levels, setLevels] = useState([]);
-  const [listContent, setListContent] = useState();
+  const [content, setContent] = useState();
   const [searchInput, setSearchInput] = useState();
+  const [isDataInitialized, setIsDataInitialized] = useState(false);
 
   const searchInputChangeHandler = useCallback(event => {
     const {
@@ -32,40 +34,39 @@ const MyCardList = () => {
     const {
       target: { value },
     } = event;
-    setLevels(
-      // On autofill we get a stringified value.
-      typeof value === "string" ? value.split(",") : value
-    );
+    setLevels(typeof value === "string" ? value.split(",") : value);
   }, []);
 
   useEffect(() => {
-    if (authUser.uid) {
+    if (!isDataInitialized && authUser.uid) {
       const loginUserId = authUser.uid;
       dispatch({ type: "GET_USER_CARDS", payload: loginUserId });
+      setIsDataInitialized(true);
     }
-  }, [authUser]);
+  }, [authUser, isDataInitialized]);
 
   if (error) {
-    setListContent({ error });
-  }
-
-  if (status === "completed" && (!loadedCards || loadedCards.length === 0)) {
-    setListContent(
-      <div>
-        <h1>No cards found</h1>
-      </div>
-    );
+    setContent({ error });
   }
 
   useEffect(() => {
-    setListContent(<CardList cards={loadedCards} />);
+    if (isDataInitialized) {
+      if (!loadedCards || loadedCards.length === 0) {
+        setContent(<NoCardsYet />);
+      } else {
+        setContent(<CardList cards={loadedCards} />);
+      }
+    }
+  }, [loadedCards, isDataInitialized]);
+
+  useEffect(() => {
     if (levels && levels.length > 0) {
       const filteredCards = loadedCards?.filter(card =>
         levels.includes(card.level)
       );
-      setListContent(<CardList cards={filteredCards} />);
+      setContent(<CardList cards={filteredCards} />);
     }
-  }, [levels, loadedCards]);
+  }, [levels]);
 
   useEffect(() => {
     const searchResult = loadedCards?.filter(
@@ -75,13 +76,11 @@ const MyCardList = () => {
         card.comment.includes(searchInput)
     );
 
-    setListContent(
-      searchResult && searchResult.length === 0 ? (
-        <NoResultsFound />
-      ) : (
-        <CardList cards={searchResult} />
-      )
-    );
+    if (searchResult && searchResult.length === 0) {
+      setContent(<NoResultsFound />);
+    } else {
+      setContent(<CardList cards={searchResult} />);
+    }
   }, [searchInput]);
 
   return (
@@ -94,10 +93,10 @@ const MyCardList = () => {
         {status === "pending" ? (
           <div className="FlexCenter my-10">
             <h2>Loading...</h2>
-            <img src={Bug} className="h-12 w-auto ml-2" />
+            <img src={Bug} alt="Bug" className="h-12 w-auto ml-2" />
           </div>
         ) : (
-          listContent
+          content
         )}
       </div>
       <div className="text-center mb-10">
