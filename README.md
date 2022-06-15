@@ -34,7 +34,7 @@ Home
 Cards Menu
 <img width="1440" alt="flash-cards" src="https://user-images.githubusercontent.com/60804249/172284089-9bfc9492-4f38-4151-8621-01e18c6c4c75.png">
 
-MyCardList
+My Card List
 <img width="1440" alt="flash-mycardslist" src="https://user-images.githubusercontent.com/60804249/172284730-98388088-0e01-42a8-80eb-801d5152da4b.png">
 
 Create Form
